@@ -1,0 +1,57 @@
+<md-dialog aria-label="Edit profile">
+    <form style="width: 500px; padding-bottom: 20px; padding-right: 20px;">
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <h1 class="md-title">Rediger profil</h1>
+                Rediger dine oplysninger nedenfor
+                <div layout="column" style="margin-top: 20px;">
+                    <md-input-container class="md-block">
+                        <label>Fornavn</label>
+                        <input type="text" ng-model="loggedInUser.fName" required>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Efternavn</label>
+                        <input type="text" ng-model="loggedInUser.lName" required>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Adresse</label>
+                        <input type="text" ng-model="loggedInUser.address" required>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>By</label>
+                        <input type="text" ng-model="loggedInUser.city" required>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Postnr.</label>
+                        <input type="text" ng-model="loggedInUser.zipcode" required>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Land</label>
+                        <input type="text" ng-model="loggedInUser.country" required>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>E-mail</label>
+                        <input type="text" ng-model="loggedInUser.email" required>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Password</label>
+                        <input type="password" ng-model="password" required>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Password</label>
+                        <input type="passwordConfirm" ng-model="password" required>
+                    </md-input-container>
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row" style="background: white; margin-top: -20px;">
+            <md-button class="md-accent md-raised" ng-click="">
+                Opdater profil
+            </md-button>
+            <span flex></span>
+            <md-button class="md-raised" ng-click="cancel()">
+                Luk
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

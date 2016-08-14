@@ -1,0 +1,67 @@
+<div class="row" ng-repeat="item in catalogItems" ng-if="$index % 3 == 0">
+    <div class="col-md-4">
+        <md-card ng-click="showItem(catalogItems[$index].id)" class="catalog-item">
+            <img ng-src="{{catalogItems[$index].imageUrl}}" class="md-card-image">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{catalogItems[$index].title}}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <p>
+                    {{catalogItems[$index].description}}
+                </p>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end bottom" ng-click="$event.stopPropagation();">
+                <md-button class="md-icon-button" aria-label="Basket"
+                           ng-click="addItemToBasket(catalogItems[$index])">
+                    <md-icon>add_shopping_cart</md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+    <div class="col-md-4">
+        <md-card ng-click="showItem(catalogItems[$index+1].id)" class="catalog-item"
+                 ng-hide="catalogItems[$index+1] == undefined">
+            <img ng-src="{{catalogItems[$index+1].imageUrl}}" class="md-card-image">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{catalogItems[$index+1].title}}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <p>
+                    {{catalogItems[$index+1].description}}
+                </p>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end bottom" ng-click="$event.stopPropagation();">
+                <md-button class="md-icon-button" aria-label="Basket"
+                           ng-click="addItemToBasket(catalogItems[$index+1])">
+                    <md-icon>add_shopping_cart</md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+    <div class="col-md-4">
+        <md-card ng-click="showItem(catalogItems[$index+2].id)" class="catalog-item"
+                 ng-hide="catalogItems[$index+2] == undefined">
+            <img ng-src="{{catalogItems[$index+2].imageUrl}}" class="md-card-image">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{catalogItems[$index+2].title}}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <p>
+                    {{catalogItems[$index+2].description}}
+                </p>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end bottom" ng-click="$event.stopPropagation();">
+                <md-button class="md-icon-button" aria-label="Basket"
+                           ng-click="addItemToBasket(catalogItems[$index+2])">
+                    <md-icon>add_shopping_cart</md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+</div>

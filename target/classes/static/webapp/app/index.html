@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ITONK shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--<link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">-->
+    <link rel="stylesheet" href="app.css">
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Angular Material style -->
+    <link rel="stylesheet"
+          href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+    <link rel="stylesheet" href="app.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="//ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+
+    <script src="config/local.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers/catalog.js"></script>
+    <script src="controllers/item.js"></script>
+    <script src="controllers/order_overview.js"></script>
+    <script src="controllers/order.js"></script>
+    <script src="controllers/basket.js"></script>
+    <script src="services/api-service.js"></script>
+    <script src="services/basket-service.js"></script>
+
+</head>
+<body ng-app="App">
+<div ng-controller="AppCtrl">
+    <!-- TOP MENU -->
+    <div layout="row" layout-wrap>
+        <md-toolbar class="md-hue-2">
+            <div class="md-toolbar-tools">
+                <md-button class="md-icon-button" aria-label="Menu-toggler" ng-click="toggleLeft()" ng-if="!isGt()">
+                    <md-icon>reorder</md-icon>
+                </md-button>
+                <h1>ITONK shop</h1>
+                <span flex></span>
+                <div ng-if="!loggedInUser">
+                    <md-button class="md-raised" ng-click="showLogin($event)" aria-label="Login">
+                        Log ind
+                    </md-button>
+                    <md-button class="md-raised" aria-label="Create user" ng-hide="true">
+                        Opret bruger
+                    </md-button>
+                </div>
+                <div ng-if="loggedInUser">
+                    Hej, {{loggedInUser.fName}} {{loggedInUser.lName}}
+                    <md-button class="md-raised" aria-label="Edit user" ng-click="showEditUser($event)" ng-hide="true">
+                        Rediger profil
+                    </md-button>
+                    <md-button class="md-raised" aria-label="Logout" ng-click="logout()">
+                        Log ud
+                    </md-button>
+                </div>
+            </div>
+        </md-toolbar>
+    </div>
+
+    <!-- /TOP MENU -->
+
+    <!-- CONTENT -->
+    <section layout="row">
+
+        <!-- LEFT MENU -->
+        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left"
+                    md-is-locked-open="$mdMedia('gt-md')">
+
+            <md-content layout-padding ng-controller="LeftCtrl">
+                <!-- LIST -->
+                <md-list>
+                    <md-list-item ng-click="navigateTo(item.screen)" ng-repeat="item in menuItems">
+                        <md-icon>{{item.icon}}</md-icon>
+                        <p> {{ item.name }} </p>
+                    </md-list-item>
+                </md-list>
+                <!-- /LIST -->
+            </md-content>
+        </md-sidenav>
+
+        <!-- /LEFT MENU -->
+
+        <md-content flex layout-padding>
+            <div layout="column" layout-fill>
+                <div ng-view></div>
+            </div>
+        </md-content>
+    </section>
+
+    <!-- /CONTENT -->
+</div>
+</body>
+</html>

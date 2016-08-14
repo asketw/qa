@@ -1,0 +1,21 @@
+<h1>Ordrer</h1>
+<div ng-if="orders.length == 0">
+    Du har ikke placeret nogen ordrer.
+</div>
+<table class="table table-striped" ng-hide="orders.length == 0">
+    <thead>
+    <tr>
+        <th style="width: 10%"><b>Ordre id</b></th>
+        <th style="width: 10%"><b>Dato</b></th>
+        <th style="width: 15%"><b>Total pris</b></th>
+        <th style="width: 15%"><b>Status</b></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="order in orders" ng-click="showOrder(order.id)">
+        <td>{{ order.id }}</td>
+        <td>{{ order.orderDate | date: "dd-MM-yyyy 'kl.' HH:mm" }}</td>
+        <td>{{ order.total }} DKK</td>
+        <td>{{ order.status}}</td>
+    </tr>
+</table>

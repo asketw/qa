@@ -1,0 +1,27 @@
+<h1>Ordre #{{order.id}}</h1>
+<h3>Dato: {{order.orderDate | date: "dd-MM-yyyy 'kl.' HH:mm"}}</h3>
+<h3>Status: {{order.status}}</h3>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th style="width: 50%"><b>Vare</b></th>
+        <th style="width: 10%"><b>Antal</b></th>
+        <th style="width: 15%"><b>Pris</b></th>
+        <th style="width: 15%"><b>Total</b></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in order.items">
+        <td>{{ item.title }}</td>
+        <td>{{ item.amount }} stk.</td>
+        <td>{{ item.price }} DKK</td>
+        <td>{{ item.price * item.amount }} DKK</td>
+    </tr>
+</table>
+
+<hr>
+
+<div class="row">
+    <div class="col-md-12"><h2>Total: {{total}} DKK</h2></div>
+</div>

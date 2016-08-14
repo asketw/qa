@@ -1,0 +1,29 @@
+<md-dialog aria-label="Login">
+    <form style="width: 500px; padding-bottom: 20px; padding-right: 20px;">
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <h1 class="md-title">Log ind</h1>
+                Indtast dine login oplysninger nedenfor
+                <div layout="column" style="margin-top: 20px;">
+                    <md-input-container class="md-block">
+                        <label>E-mail</label>
+                        <input type="text" ng-model="email" md-autofocus required>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Password</label>
+                        <input type="password" ng-model="password" required>
+                    </md-input-container>
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row" style="background: white; margin-top: -20px;">
+            <md-button class="md-accent md-raised" ng-click="login()">
+                Log ind
+            </md-button>
+            <span flex></span>
+            <md-button class="md-raised" ng-click="cancel()">
+                Luk
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

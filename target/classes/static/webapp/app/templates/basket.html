@@ -1,0 +1,32 @@
+<h1>Kurv</h1>
+<div ng-if="basketItems.length == 0">
+    Der er ingen varer i kurven.
+</div>
+<table class="table table-striped" ng-hide="basketItems.length == 0">
+    <thead>
+    <tr>
+        <th style="width: 50%"><b>Vare</b></th>
+        <th style="width: 10%"><b>Antal</b></th>
+        <th style="width: 15%"><b>Pris</b></th>
+        <th style="width: 15%"><b>Total</b></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in basketItems">
+        <td>{{ item.title }}</td>
+        <td>{{ item.amount }} stk.</td>
+        <td>{{ item.price }} DKK</td>
+        <td>{{ item.price * item.amount }} DKK</td>
+        <td ng-click="removeFromShoppingCart(item)">
+            <md-icon>remove_shopping_cart</md-icon>
+        </td>
+    </tr>
+</table>
+
+<hr>
+
+<div class="row" ng-hide="basketItems.length == 0">
+    <div class="col-md-12"><h2>Total: {{getTotal()}} DKK</h2></div>
+    <md-button class="md-raised md-primary" style="color: white" ng-click="placeOrder()">Placer ordre</md-button>
+</div>
